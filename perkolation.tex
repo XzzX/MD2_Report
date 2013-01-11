@@ -1,31 +1,20 @@
-\chapter{Perkolation}
+\chapter{Perkolation im Boolschen Modell}
 
-Im Gegensatz zum Ansatz in der vorherigen Arbeit (vgl \cite{eibl2012}), beschäftigt sich diese Arbeit mit einem anderen Ansatz die Dynamik von Teilchen zu simulieren. Dabei werden nicht die Bewegungsgleichungen der einzelnen Teilchen um einen festen Zeitschritt integriert, um ihre Ortskurven zu erhalten und ihr Verhalten zu bestimmen, sondern die Simulation entwickelt sich von Ereignis zu Ereignis. Ein Ereignis in diesem Zusammenhang kann zum Beispiel eine Teilchen-Teilchen-Kollision, eine Teilchen-Wand-Kollision, ein Aktualisieren des Bildschirms, etc sein. Bei dieser Art der Simulation können keine kontinuierlichen Teilchenpotentiale mehr betrachtet werden. Stadtessen werden Sprungpotentiale verwendet:
-\begin{equation}
-V(r) = \left\{ 
-\begin{array}{lll} 
-\infty & \quad \text{für} & r\leq R \\  
-0 & \quad\text{für} & r>R 
-\end{array}
-\right.
-\end{equation}
-wobei $R$ der Radius des Teilchens ist. Dies entspricht einem Harte-Kugel-Fluid, bei dem die Teilchen wie Billardkugeln miteinander stoßen.
-
-Die erste mögliche Implementation ist nun, alle möglichen Ereignisse zu berechnen, die Simulation auf den Zeitpunkt des frühesten Ereignisses zu setzen und das Ereignis auszuführen. Dafür müssen in jedem Schritt die Kollisionen von allen Teilchen mit allen anderen berechnet werden. Dies führt zu einer quadratischen Laufzeit mit der Teilchenzahl (\fref{fig:A1_runtime}). Für eine ernsthafte Simulation ist diese Variante deswegen unpraktisch.
+Nun sollen die Perkolationseigenschaften eines porösen Mediums untersucht werden. Als Modell für das poröse Medium wird das Boolsche Modell für die Perkolation verwendet. Für die Untersuchung wird eine quadratische Simulationsbox mit der Länge $L$ verwendet. In dieser Simulationsbox werden nun Kreise mit dem Radius $R=1$ verteilt, die die Hindernisse darstellen. Eine Überlappung der Kreise ist erlaubt. Man spricht von einem perkolierenden Cluster, wenn es eine durchgängige Fläche von überlappenden Kreisen gibt, die die gegenüberliegenden Ränder verbindet. Es lässt sich zeigen, dass es ausreichend ist eine Perkolation in einer Richtung zu finden, um von allgemeiner Perkolation zu sprechen. Wäre das System unendlich vergrößert, bei gleichbleibender Dichte der Kreise, gäbe es auch in der anderen Richtung eine Perkolation.
 
 \begin{figure}[h!]
 	\centering
-		\includegraphics[width=0.80\textwidth]{img/A1_runtime.png}
-	\caption{Laufzeit der einfachen Event-Driven Molekulardynamik-Simulation. Die ermittelte Komplexität beträgt $O(N^2.00)$. Dies ist für eine ernsthafte wissenschaftliche Simulation unbrauchbar.}
-	\label{fig:A1_runtime}
+		\includegraphics[width=0.80\textwidth]{img/perkolation.jpg}
+	\caption{Beispiel eines perkolierenden Clusters. Die weiße Fläche stellt die überlagernden Kreise da. Es ist möglich, das System von oben nach unten auf der weißen Fläche zu durchqueren. Von rechts nach links gibt es kein perkolierendes Cluster. Aufgrund der periodischen Randbedingungen reicht allerdings eine Perkolation in eine Richtung. Im Unendlichen gäbe es damit auch eine Perkolation in der Waagrechten.}
+	\label{fig:perkolation}
 \end{figure}
-
-Um die Komplexität zu verringern werden wie schon bei der Molekulardynamik von weichen Teilchen periodische Randbedingungen und eine Zellunterteilung eingeführt (siehe hierzu \cite{rapaport2004} und \cite{eibl2012}). Weiterhin wird ein sogenannter Event-Kalender verwendet. Dieser speichert alle berechneten Ereignisse und stellt sie im nächsten Zeitschritt wieder zur Verfügung. Somit müssen nicht jedes Mal alle Ereignisse neu berechnet werden, was redundante Rechenarbeit spart. Im Endeffekt müssen nur diejenigen Ereignisse neu berechnet werden, die durch das ausgewertete Ereignis ungültig werden, z.B. zukünftige Teilchekollisionen eines gerade stoßenden Teilchens. Die Struktur des Event-Kalenders muss deswegen leistungsfähig im Bezug auf Löschen und Einfügen neuer Ereignisse sein. In dieser Arbeit wurde die Konstruktion des Event-Kalenders von Rapaport verwendet. \cite{rapaport2004} Die Komplexität des Programms sollte sich damit theoretisch auf $O(N^1)$ reduzieren. Praktisch lies sich dieser Wert durch Ungenauigkeiten bei der Zeitmessung nicht ganz korrekt beobachten (\fref{fig:A2_runtime}). Eine Komplexität von $1.12$ zeigt aber eine deutliche Richtung und ist wesentlich besser als die Komplexität ohne Optimierungen.
 
 \begin{figure}[h!]
 	\centering
-		\includegraphics[width=0.80\textwidth]{img/A2_runtime.png}
-	\caption{Laufzeit der verbesserten Event-Driven Molekulardynamik-Simulation mit Zellunterteilung und einem Event-Kalender. Die ermittelte Komplexität beträgt $O(N^{1.12})$. Die Abweichung von der theoretisch Erwarteten Komplexität von $N^1$, lässt sich durch eine schwierige Bestimmung der restlichen Last auf dem Computer erklären.}
-	\label{fig:A2_runtime}
+		\includegraphics[width=0.80\textwidth]{img/nonperkolation.jpg}
+	\caption{Beispiel für Cluster ohne Perkolation. Hier ist es weder möglich, das Systen von rechts nach links noch von oben nach unten über die weiße Fläche zu durchschreiten.}
+	\label{fig:nonperkolation}
 \end{figure}
+
+
 

@@ -6,9 +6,9 @@ import matplotlib.pyplot as pl
 import scipy.optimize as optimize
 
 #loading parameters
-seed, N, space, axialRatio, boxWidth, boxHeight, particleSpeed, runs, gui = np.loadtxt("data/"+sys.argv[1]+"_conf.txt").transpose()
+seed, N, space, axialRatio, boxWidth, boxHeight, L, particleSpeed, runs, gui = np.loadtxt("data/"+sys.argv[1]+"_conf.txt").transpose()
 
-t, x, y, z, vx, vy, vz, d, d2 = np.loadtxt("data/"+sys.argv[1]+".txt").transpose()
+t, d, d2 = np.loadtxt("data/"+sys.argv[1]+".txt").transpose()
 
 pl.title("Diffusion")
 pl.plot(t, d2, "x", label="kein Gesamtimpuls")
