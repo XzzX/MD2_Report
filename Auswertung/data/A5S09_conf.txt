@@ -1,0 +1,29 @@
+#CONFIGURATION
+#seed:                694157320
+#number of particles: 250
+#lattice space        3
+#axial ratio          1
+#box_width:           50
+#box height:          50
+#box length:          50
+#obstacle radius:     1
+#test particle radius:0.9
+#number of test part: 100
+#lattice type:        random positioning of the particles
+#particle speed:		 2
+#runs:                0
+#nogui:               1
+#logname:             A5S09
+694157320
+250
+3
+1
+50
+50
+50
+1
+0.9
+100
+2
+0
+1

@@ -6,7 +6,7 @@ import matplotlib.pyplot as pl
 import scipy.optimize as optimize
 
 #loading parameters
-seed, N, space, axialRatio, boxWidth, boxHeight, particleSpeed, runs, gui = np.loadtxt("data/"+sys.argv[1]+"_conf.txt").transpose()
+seed, N, space, axialRatio, boxWidth, boxHeight, L, radius, sigma, testParticles,  particleSpeed, runs, gui = np.loadtxt("data/"+sys.argv[1]+"_conf.txt").transpose()
 
 t, d, d2 = np.loadtxt("data/"+sys.argv[1]+".txt").transpose()
 
@@ -17,7 +17,7 @@ pl.loglog()
 pl.xlabel(ur"Zeit t")
 pl.ylabel(ur"Diffusion $\left< \left[\vec{r}(t)-\vec{r}(0)\right]^2 \right>$")
 #pl.legend(loc="lower right")
-#pl.axhline(boxHeight*boxHeight)
+pl.axhline(boxHeight*boxHeight)
 pl.grid()
 
 #FitFunc = lambda a,b,x : a*x + b

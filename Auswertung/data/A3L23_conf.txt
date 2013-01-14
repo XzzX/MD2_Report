@@ -1,5 +1,5 @@
 #CONFIGURATION
-#seed:                1357904666
+#seed:                1358154319
 #number of particles: 961
 #lattice space        2.3
 #axial ratio          1
@@ -10,7 +10,7 @@
 #runs:			     0
 #nogui:			     1
 #logname:             A3L23
-1357904666
+1358154319
 961
 2.3
 1

@@ -1,0 +1,21 @@
+#CONFIGURATION
+#seed:                1358154253
+#number of particles: 961
+#lattice space        2.26
+#axial ratio          1
+#box_width:           70.06
+#box height:          60.9765
+#lattice type:		 triangular lattice
+#particle speed:		 2
+#runs:			     0
+#nogui:			     1
+#logname:             A3L226
+1358154253
+961
+2.26
+1
+70.06
+60.9765
+2
+0
+1
