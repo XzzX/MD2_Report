@@ -4,4 +4,30 @@ Nun soll untersucht werden, ob es für ein Harte-Kugel-Fluid einen Phasenübergang
 \begin{equation}
 \rho = \frac{2}{\sqrt{3}\Lambda^2}
 \end{equation}
-wobei $\Lambda$ den Gitterabstand bezeichnet. Da alle Teilchen den gleichen Radius $R=1$ besitzen, ist die maximale Dichte $\rho\approx 0.289$. Diese wird für $\Lambda = 2$ erreicht.
+wobei $\Lambda$ den Gitterabstand bezeichnet. Da alle Teilchen den gleichen Radius $R=1$ besitzen, ist die maximale Dichte $\rho\approx 0.289$. Diese wird für $\Lambda = 2$ erreicht. 
+
+\section{Diffusionsverhalten}
+Das Diffusionsverhalten für unterschiedliche Dichten ist in \fref{fig:A3_phase} dargestellt.
+
+\begin{figure}[htbp]
+	\centering
+		\includegraphics[width=0.70\textwidth]{img/A3_phase.png}
+	\caption{Dargestellt ist das Diffusionsverhalten bei verschiedenen Gitterabständen. Bis zum ersten Stoß lässt sich bei allen Dichten eine ballistische Diffusion feststellen. Ein Phasenübergang, das heißt eine Änderung des Diffusionsverhaltens von beschränkt auf diffusiv, lässt sich zwischen $\Lambda=2.2-2.3$ beobachten.}
+	\label{fig:A3_phase}
+\end{figure}
+
+Bis zum ersten Teilchenstoß ist ein ballistisches Diffusionsverhalten zu beobachten. Danach sollte für den gasförmigen beziehungsweise flüssigen Zustand normales diffusives Verhalten beobachtbar sein. Für den festen Zustand ergibt sich durch die Brown'sche Molekularbewegung ein beschränktes Verhalten. In \fref{fig:A3_phase} kann deswegen ein Phasenübergang für $\Lambda=2.2-2.3$ vermutet werden.
+
+\section{Paar-Korrelationsfunktion}
+Zur Überprüfung der Ergebnisse aus dem vorherigen Abschnitt wird auch noch die Paarkorrelationsfunktion der verschiedenen Konfigurationen untersucht. Die Paarkorrelationsfunktion in zwei Dimensionen ist wie folgt definiert: \cite{rapaport2004} und \cite{eibl2012}:
+\begin{equation}
+g(r_n) = \frac{h_n L_x L_y}{\pi N^2 r_n \Delta r}
+\end{equation}
+wobei $L_x$ und $L_y$ die Ausdehnung der Simulationsbox, $N$ die Gesamtzahl der Teilchen, $h_n$ die Anzahl der Teilchen im Abstand $r$ mit $(n-1)\Delta r<r<n\Delta r$, $r_n=(n+\frac{1}{2})\Delta r$ und $\Delta r$ die Diskretisierung des Abstands ist.
+
+\begin{figure}[htbp]
+	\centering
+		\includegraphics[width=0.70\textwidth]{img/A3_korrelation.png}
+	\caption{Dargestellt ist das Diffusionsverhalten bei verschiedenen Gitterabständen. Bis zum ersten Stoß lässt sich bei allen Dichten eine ballistische Diffusion feststellen. Ein Phasenübergang, das heißt eine Änderung des Diffusionsverhaltens von beschränkt auf diffusiv, lässt sich zwischen $\Lambda=2.2-2.3$ beobachten.}
+	\label{fig:A3_korrelation}
+\end{figure}

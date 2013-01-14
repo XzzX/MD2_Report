@@ -10,10 +10,10 @@ seed, N, space, axialRatio, boxWidth, boxHeight, particleSpeed, runs, gui = np.l
 
 r = np.loadtxt("data/"+sys.argv[1]+"_correlation.txt").transpose()
 [h,x] = np.histogram(r,200, range=(0,r.max()))
-g = h*boxWidth*boxHeight/(np.pi*x[1]*x[1]*N*N*(np.arange(len(h))+1-0.5))
+g = h*boxWidth*boxHeight/(np.pi**x[1]*x[1]*N*N*(np.arange(len(h))+1-0.5))
 pl.plot(x[1:], g)
 pl.grid()
-pl.xlim(0,15)
+pl.xlim(0,20)
 pl.xlabel("Abstand r")
 pl.ylabel("Zwei-Punkt-Korrelationsfunktion g")
 pl.title("Gitterkonstante = 1.4")

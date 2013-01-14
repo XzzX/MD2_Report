@@ -1,31 +1,19 @@
-\chapter{Event-Driven Molekulardynamik}
+\chapter{Anormale Diffusion - Lorentz-Modell}
 
-Im Gegensatz zum Ansatz in der vorherigen Arbeit (vgl \cite{eibl2012}), beschäftigt sich diese Arbeit mit einem anderen Ansatz die Dynamik von Teilchen zu simulieren. Dabei werden nicht die Bewegungsgleichungen der einzelnen Teilchen um einen festen Zeitschritt integriert, um ihre Ortskurven zu erhalten und ihr Verhalten zu bestimmen, sondern die Simulation entwickelt sich von Ereignis zu Ereignis. Ein Ereignis in diesem Zusammenhang kann zum Beispiel eine Teilchen-Teilchen-Kollision, eine Teilchen-Wand-Kollision, ein Aktualisieren des Bildschirms, etc sein. Bei dieser Art der Simulation können keine kontinuierlichen Teilchenpotentiale mehr betrachtet werden. Stadtessen werden Sprungpotentiale verwendet:
-\begin{equation}
-V(r) = \left\{ 
-\begin{array}{lll} 
-\infty & \quad \text{für} & r\leq R \\  
-0 & \quad\text{für} & r>R 
-\end{array}
-\right.
-\end{equation}
-wobei $R$ der Radius des Teilchens ist. Dies entspricht einem Harte-Kugel-Fluid, bei dem die Teilchen wie Billardkugeln miteinander stoßen.
+Zum Abschluss soll das Diffusionsverhalten von Teilchen untersucht werden, die auf den Porenraum des Boolschen Modells beschränkt sind. Die Visualisierung der Teilchentrajektorie eines Testteilchens mit Radius $\sigma = 0.1$ ist in \fref{fig:big} zu sehen.
 
-Die erste mögliche Implementation ist nun, alle möglichen Ereignisse zu berechnen, die Simulation auf den Zeitpunkt des frühesten Ereignisses zu setzen und das Ereignis auszuführen. Dafür müssen in jedem Schritt die Kollisionen von allen Teilchen mit allen anderen berechnet werden. Dies führt zu einer quadratischen Laufzeit mit der Teilchenzahl (\fref{fig:A1_runtime}). Für eine ernsthafte Simulation ist diese Variante deswegen unpraktisch.
-
-\begin{figure}[h!]
+\begin{figure}[htbp]
 	\centering
-		\includegraphics[width=0.80\textwidth]{img/A1_runtime.png}
-	\caption{Laufzeit der einfachen Event-Driven Molekulardynamik-Simulation. Die ermittelte Komplexität beträgt $O(N^2.00)$. Dies ist für eine ernsthafte wissenschaftliche Simulation unbrauchbar.}
-	\label{fig:A1_runtime}
+		\includegraphics[width=0.70\textwidth]{img/big.jpg}
+	\caption{Teilchentrajektorie im Porenraum des Boolschen Modells für ein Teilchen mit Radius $\sigma = 0.1$}
+	\label{fig:big}
 \end{figure}
 
-Um die Komplexität zu verringern werden wie schon bei der Molekulardynamik von weichen Teilchen periodische Randbedingungen und eine Zellunterteilung eingeführt (siehe hierzu \cite{rapaport2004} und \cite{eibl2012}). Weiterhin wird ein sogenannter Event-Kalender verwendet. Dieser speichert alle berechneten Ereignisse und stellt sie im nächsten Zeitschritt wieder zur Verfügung. Somit müssen nicht jedes Mal alle Ereignisse neu berechnet werden, was redundante Rechenarbeit spart. Im Endeffekt müssen nur diejenigen Ereignisse neu berechnet werden, die durch das ausgewertete Ereignis ungültig werden, z.B. zukünftige Teilchekollisionen eines gerade stoßenden Teilchens. Die Struktur des Event-Kalenders muss deswegen leistungsfähig im Bezug auf Löschen und Einfügen neuer Ereignisse sein. In dieser Arbeit wurde die Konstruktion des Event-Kalenders von Rapaport verwendet. \cite{rapaport2004} Die Komplexität des Programms sollte sich damit theoretisch auf $O(N^1)$ reduzieren. Praktisch lies sich dieser Wert durch Ungenauigkeiten bei der Zeitmessung nicht ganz korrekt beobachten (\fref{fig:A2_runtime}). Eine Komplexität von $1.12$ zeigt aber eine deutliche Richtung und ist wesentlich besser als die Komplexität ohne Optimierungen.
+Die erste Frage, die sich stellt, ist, ob sich die Trajektorie ändert, wenn man Punktteilchen betrachtet und dafür den Radius der Scheiben, die die Hindernisse darstellen, auf $R=R+\sigma$ vergrößert. Da für die Stöße mit den Hindernisteilchen vollkommen elastische Stöße angenommen werden, führt diese Änderung zu den gleichen Trajektorien (siehe \fref{fig:small}). Durch das gleiche Argument spielt auch der Betrag der Anfangsgeschwindigkeit der Teilchen keine Rolle. Die Teilchen legen zwar insgesamt für höhere Anfangsgeschwindigkeiten weitere Wege zurück, aber das Abprallverhalten an den Hindernisse bleibt das gleiche.
 
-\begin{figure}[h!]
+\begin{figure}[htbp]
 	\centering
-		\includegraphics[width=0.80\textwidth]{img/A2_runtime.png}
-	\caption{Laufzeit der verbesserten Event-Driven Molekulardynamik-Simulation mit Zellunterteilung und einem Event-Kalender. Die ermittelte Komplexität beträgt $O(N^{1.12})$. Die Abweichung von der theoretisch Erwarteten Komplexität von $N^1$, lässt sich durch eine schwierige Bestimmung der restlichen Last auf dem Computer erklären.}
-	\label{fig:A2_runtime}
+		\includegraphics[width=0.70\textwidth]{img/small.jpg}
+	\caption{Die Größe der Testteilchen spielt keine Rolle, wenn die Größe der Hindernisse angepasst wird (vgl \fref{fig:big}).}
+	\label{fig:small}
 \end{figure}
-

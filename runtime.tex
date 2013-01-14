@@ -1,6 +1,8 @@
 \chapter{Event-Driven Molekulardynamik}
 
-Im Gegensatz zum Ansatz in der vorherigen Arbeit (vgl \cite{eibl2012}), beschäftigt sich diese Arbeit mit einem anderen Ansatz die Dynamik von Teilchen zu simulieren. Dabei werden nicht die Bewegungsgleichungen der einzelnen Teilchen um einen festen Zeitschritt integriert, um ihre Ortskurven zu erhalten und ihr Verhalten zu bestimmen, sondern die Simulation entwickelt sich von Ereignis zu Ereignis. Ein Ereignis in diesem Zusammenhang kann zum Beispiel eine Teilchen-Teilchen-Kollision, eine Teilchen-Wand-Kollision, ein Aktualisieren des Bildschirms, etc sein. Bei dieser Art der Simulation können keine kontinuierlichen Teilchenpotentiale mehr betrachtet werden. Stadtessen werden Sprungpotentiale verwendet:
+Im Gegensatz zum Ansatz in der vorherigen Arbeit (vgl \cite{eibl2012}), beschäftigt sich diese Arbeit mit einem anderen Ansatz die Dynamik von Teilchen zu simulieren. Dabei werden nicht die Bewegungsgleichungen der einzelnen Teilchen um einen festen Zeitschritt integriert, um ihre Ortskurven zu erhalten und ihr Verhalten zu bestimmen, sondern die Simulation entwickelt sich von Ereignis zu Ereignis. Ein Ereignis in diesem Zusammenhang kann zum Beispiel eine Teilchen-Teilchen-Kollision, eine Teilchen-Wand-Kollision, ein Aktualisieren des Bildschirms, etc sein. Die Effizienz dieser Vorgehensweise hängt stark von der Teilchendichte ab, da diese die Ereignisse pro Zeitintervall bestimmt. Für geringe Teilchendichten mit relativ langer freier Weglänge ist die Event-Driven Simulation effizienter. \cite{rapaport2004} 
+
+Bei dieser Art der Simulation können keine kontinuierlichen Teilchenpotentiale mehr betrachtet werden. Stadtessen werden Sprungpotentiale verwendet:
 \begin{equation}
 V(r) = \left\{ 
 \begin{array}{lll} 
@@ -15,7 +17,7 @@ Die erste mögliche Implementation ist nun, alle möglichen Ereignisse zu berechne
 
 \begin{figure}[h!]
 	\centering
-		\includegraphics[width=0.80\textwidth]{img/A1_runtime.png}
+		\includegraphics[width=0.70\textwidth]{img/A1_runtime.png}
 	\caption{Laufzeit der einfachen Event-Driven Molekulardynamik-Simulation. Die ermittelte Komplexität beträgt $O(N^2.00)$. Dies ist für eine ernsthafte wissenschaftliche Simulation unbrauchbar.}
 	\label{fig:A1_runtime}
 \end{figure}
@@ -24,7 +26,7 @@ Um die Komplexität zu verringern werden wie schon bei der Molekulardynamik von w
 
 \begin{figure}[h!]
 	\centering
-		\includegraphics[width=0.80\textwidth]{img/A2_runtime.png}
+		\includegraphics[width=0.70\textwidth]{img/A2_runtime.png}
 	\caption{Laufzeit der verbesserten Event-Driven Molekulardynamik-Simulation mit Zellunterteilung und einem Event-Kalender. Die ermittelte Komplexität beträgt $O(N^{1.12})$. Die Abweichung von der theoretisch Erwarteten Komplexität von $N^1$, lässt sich durch eine schwierige Bestimmung der restlichen Last auf dem Computer erklären.}
 	\label{fig:A2_runtime}
 \end{figure}

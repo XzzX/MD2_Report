@@ -1,20 +1,22 @@
-\chapter{Perkolation im Boolschen Modell}
+\chapter{Perkolation im Boolschen Modell für poröse Medien in 2D}
 
-Nun sollen die Perkolationseigenschaften eines porösen Mediums untersucht werden. Als Modell für das poröse Medium wird das Boolsche Modell für die Perkolation verwendet. Für die Untersuchung wird eine quadratische Simulationsbox mit der Länge $L$ verwendet. In dieser Simulationsbox werden nun Kreise mit dem Radius $R=1$ verteilt, die die Hindernisse darstellen. Eine Überlappung der Kreise ist erlaubt. Man spricht von einem perkolierenden Cluster, wenn es eine durchgängige Fläche von überlappenden Kreisen gibt, die die gegenüberliegenden Ränder verbindet. Es lässt sich zeigen, dass es ausreichend ist eine Perkolation in einer Richtung zu finden, um von allgemeiner Perkolation zu sprechen. Wäre das System unendlich vergrößert, bei gleichbleibender Dichte der Kreise, gäbe es auch in der anderen Richtung eine Perkolation.
+Nun sollen die Perkolationseigenschaften eines porösen Mediums untersucht werden. Als Modell für das poröse Medium wird das Boolsche Modell für die Perkolation verwendet. Für die Untersuchung wird eine quadratische Simulationsbox mit der Länge $L$ verwendet. In dieser Simulationsbox werden nun Kreise mit dem Radius $R=1$ verteilt, die die Hindernisse darstellen. Eine Überlappung der Kreise ist erlaubt. Sich überlagernde Kreise werden als Cluster bezeichnet. Man spricht von einem perkolierenden Cluster, wenn es eine durchgängige Fläche von überlappenden Kreisen gibt, die die gegenüberliegenden Ränder verbindet. Es lässt sich zeigen, dass es ausreichend ist eine Perkolation in einer Richtung zu finden, um von allgemeiner Perkolation zu sprechen. 
 
 \begin{figure}[h!]
 	\centering
-		\includegraphics[width=0.80\textwidth]{img/perkolation.jpg}
+		\includegraphics[width=0.70\textwidth]{img/perkolation.jpg}
 	\caption{Beispiel eines perkolierenden Clusters. Die weiße Fläche stellt die überlagernden Kreise da. Es ist möglich, das System von oben nach unten auf der weißen Fläche zu durchqueren. Von rechts nach links gibt es kein perkolierendes Cluster. Aufgrund der periodischen Randbedingungen reicht allerdings eine Perkolation in eine Richtung. Im Unendlichen gäbe es damit auch eine Perkolation in der Waagrechten.}
 	\label{fig:perkolation}
 \end{figure}
 
 \begin{figure}[h!]
 	\centering
-		\includegraphics[width=0.80\textwidth]{img/nonperkolation.jpg}
+		\includegraphics[width=0.70\textwidth]{img/nonperkolation.jpg}
 	\caption{Beispiel für Cluster ohne Perkolation. Hier ist es weder möglich, das Systen von rechts nach links noch von oben nach unten über die weiße Fläche zu durchschreiten.}
 	\label{fig:nonperkolation}
 \end{figure}
 
+In zwei Dimensionen lässt sich die Perkolationseigenschaft des Porenraumes aus der Perkolation des festen Teiles (überlappende Kreisscheiben berechnen). In diesem Fall verhalten sich die zwei Fälle komplementär, das heißt, wenn der eine perkoliert, perkoliert der andere nicht und umgekehrt. Somit ist es ausreichend die Perkolationseigenschaft des festen Teiles zu bestimmen.
 
-
+\section{Voronoi-Diagramm}
+Numerisch lässt sich die Perkolationseigenschaft mit Hilfe des Voronoi-Diagrammes bestimmen. Dazu werden um jeden Partikel herum Zellen gebildet. Die Zellen beinhalten alle Punkte die näher an dem einen Partikel liegen, als an den anderen. In einem zweiten Schritt werden alle Zellen zusammengefasst, die zu sich überlagernden Kreisen gehören. Wenn es nun möglich ist, eine Verbindung von Kanten zu finden, die sich von einer Begrenzungswand zur anderen erstreckt, liegt keine Perkolation vor. Das Problem ist somit, auf Rechnungen mit Strecken reduziert.
