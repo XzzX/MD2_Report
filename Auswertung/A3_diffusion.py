@@ -11,7 +11,7 @@ seed, N, space, axialRatio, boxWidth, boxHeight, particleSpeed, runs, gui = np.l
 t, d, d2 = np.loadtxt("data/"+sys.argv[1]+".txt").transpose()
 
 pl.title("Diffusion")
-pl.plot(t, d2, "x", label=ur"$\Lambda=%1.1f$" % (boxWidth/np.sqrt(N)))
+pl.plot(t, d2, "x", label=ur"$\Lambda=%1.2f$" % (boxWidth/np.sqrt(N)))
 #pl.plot(t2, d23, label="mit Gesamtimpuls")
 pl.loglog()
 pl.xlabel(ur"Zeit t")

@@ -1,19 +1,47 @@
 \chapter{Anormale Diffusion - Lorentz-Modell}
 
-Zum Abschluss soll das Diffusionsverhalten von Teilchen untersucht werden, die auf den Porenraum des Boolschen Modells beschränkt sind. Die Visualisierung der Teilchentrajektorie eines Testteilchens mit Radius $\sigma = 0.1$ ist in \fref{fig:big} zu sehen.
+\section{Lorentz-Modell}
 
-\begin{figure}[htbp]
+Zum Abschluss soll das Diffusionsverhalten von Teilchen untersucht werden, die auf den Porenraum des Boolschen Modells beschränkt sind. Dieser spezielle Anwendungsfall wird auch als Lorentz-Modell bezeichnet. Die Visualisierung der Teilchentrajektorie eines Testteilchens mit Radius $\sigma = 0.1$ ist in \fref{fig:big} zu sehen.
+
+\begin{figure}[!ht]
 	\centering
 		\includegraphics[width=0.70\textwidth]{img/big.jpg}
 	\caption{Teilchentrajektorie im Porenraum des Boolschen Modells für ein Teilchen mit Radius $\sigma = 0.1$}
 	\label{fig:big}
 \end{figure}
 
-Die erste Frage, die sich stellt, ist, ob sich die Trajektorie ändert, wenn man Punktteilchen betrachtet und dafür den Radius der Scheiben, die die Hindernisse darstellen, auf $R=R+\sigma$ vergrößert. Da für die Stöße mit den Hindernisteilchen vollkommen elastische Stöße angenommen werden, führt diese Änderung zu den gleichen Trajektorien (siehe \fref{fig:small}). Durch das gleiche Argument spielt auch der Betrag der Anfangsgeschwindigkeit der Teilchen keine Rolle. Die Teilchen legen zwar insgesamt für höhere Anfangsgeschwindigkeiten weitere Wege zurück, aber das Abprallverhalten an den Hindernisse bleibt das gleiche.
+Die erste Frage, die sich stellt, ist, ob sich die Trajektorie ändert, wenn man Punktteilchen betrachtet und dafür den Radius der Scheiben, die die Hindernisse darstellen, auf $R=R+\sigma$ vergrößert. Da für die Stöße mit den Hindernisteilchen vollkommen elastische Stöße angenommen werden, führt diese Änderung zu den gleichen Trajektorien (siehe \fref{fig:small}). Dies führt zu folgender Äquivalenz:
+\begin{equation}
+\label{eq:aquivalenz}
+\left( R, \sigma \right) \Leftrightarrow \left( R + \sigma, 0  \right)
+\end{equation}
+Durch das gleiche Argument spielt auch der Betrag der Anfangsgeschwindigkeit der Teilchen keine Rolle. Die Teilchen legen zwar insgesamt für höhere Anfangsgeschwindigkeiten weitere Wege zurück, aber das Abprallverhalten an den Hindernisse bleibt das gleiche.
 
-\begin{figure}[htbp]
+\begin{figure}[!ht]
 	\centering
 		\includegraphics[width=0.70\textwidth]{img/small.jpg}
 	\caption{Die Größe der Testteilchen spielt keine Rolle, wenn die Größe der Hindernisse angepasst wird (vgl \fref{fig:big}).}
 	\label{fig:small}
 \end{figure}
+
+\section{Diffusionsverhalten}
+Für das Diffusionsverhalten im Lorentz-Modell ergeben sich nahe der Perkolationsschwelle interessante Phänomene. Zur Untersuchung dieses Verhaltens wird folgende Konfiguration verwendet.
+
+\begin{figure}[!ht]
+	\centering
+		\includegraphics[width=0.70\textwidth]{img/lorentz.jpg}
+	\caption{Testkonfiguration für die Diffusion im Lorentz-Modell.}
+	\label{fig:lorentz}
+\end{figure}
+
+Um die Diffusionseigenschaften zu untersuchen wird jeweils über 100 Testteilchen gemittelt. Dieses Experiment wird für verschiedene Teilchenradien durchgeführt. Durch die in \fref{eq:aquivalenz} gegebene Äquivalenz lässt sich damit das verhalten nahe am Perkolationspunkt untersuchen. Der Perkolationspunkt des angegebenen Systems liegt bei (1.7562, 0).
+
+\begin{figure}[!ht]
+	\centering
+		\includegraphics[width=0.70\textwidth]{img/A5_diffusion.png}
+	\caption{Diffusionsverhalten bei verschieden großem Hindernisradius R. Die Testteilchen besitzen in dieser Darstellung einen Radius von $\sigma=0$. In der Nähe der Perkolationsschwelle lassen sich Diffusionen mit einem exponenten zwischen 0 und 1 beobachten.}
+	\label{fig:A5_diffusion}
+\end{figure}
+
+Für kleinen Hindernisradius lässt sich normales diffusives Verhalten mit einem Exponenten von 1 beobachten. Für sehr große Hindernisradien wird das Verhalten beschränkt (Exponent = 0). Im Bereich um den Perkolationspunkt lassen sich verschiedene andere Exponenten im Intervall [0,1] beobachten. Das Diffusionsverhalten mit Exponenten in diesem Bereich bezeichnet man als anormale Diffusion.

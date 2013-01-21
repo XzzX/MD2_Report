@@ -7,16 +7,16 @@ Nun soll untersucht werden, ob es für ein Harte-Kugel-Fluid einen Phasenübergang
 wobei $\Lambda$ den Gitterabstand bezeichnet. Da alle Teilchen den gleichen Radius $R=1$ besitzen, ist die maximale Dichte $\rho\approx 0.289$. Diese wird für $\Lambda = 2$ erreicht. 
 
 \section{Diffusionsverhalten}
-Das Diffusionsverhalten für unterschiedliche Dichten ist in \fref{fig:A3_phase} dargestellt.
+Das Diffusionsverhalten für unterschiedliche Dichten ist in \fref{fig:A3_diffusion} dargestellt.
 
-\begin{figure}[htbp]
+\begin{figure}[!ht]
 	\centering
-		\includegraphics[width=0.70\textwidth]{img/A3_phase.png}
-	\caption{Dargestellt ist das Diffusionsverhalten bei verschiedenen Gitterabständen. Bis zum ersten Stoß lässt sich bei allen Dichten eine ballistische Diffusion feststellen. Ein Phasenübergang, das heißt eine Änderung des Diffusionsverhaltens von beschränkt auf diffusiv, lässt sich zwischen $\Lambda=2.2-2.3$ beobachten.}
-	\label{fig:A3_phase}
+		\includegraphics[width=0.70\textwidth]{img/A3_diffusion.png}
+	\caption{Dargestellt ist das Diffusionsverhalten bei verschiedenen Gitterabständen. Bis zum ersten Stoß lässt sich bei allen Dichten eine ballistische Diffusion feststellen. Ein Phasenübergang, das heißt eine Änderung des Diffusionsverhaltens von beschränkt auf diffusiv, lässt sich zwischen $\Lambda=2.20-2.28$ beobachten. Die Überlagerung der festen und der flüssigen Phase während des Schmelzens führt zu einer undefinierten Diffusionserscheinung.}
+	\label{fig:A3_diffusion}
 \end{figure}
 
-Bis zum ersten Teilchenstoß ist ein ballistisches Diffusionsverhalten zu beobachten. Danach sollte für den gasförmigen beziehungsweise flüssigen Zustand normales diffusives Verhalten beobachtbar sein. Für den festen Zustand ergibt sich durch die Brown'sche Molekularbewegung ein beschränktes Verhalten. In \fref{fig:A3_phase} kann deswegen ein Phasenübergang für $\Lambda=2.2-2.3$ vermutet werden.
+Bis zum ersten Teilchenstoß ist ein ballistisches Diffusionsverhalten zu beobachten. Danach sollte für den gasförmigen beziehungsweise flüssigen Zustand normales diffusives Verhalten beobachtbar sein. Für den festen Zustand ergibt sich durch die Brown'sche Molekularbewegung ein beschränktes Verhalten. In \fref{fig:A3_diffusion} kann deswegen ein Phasenübergang für $\Lambda=2.20-2.28$ vermutet werden. Für $\Lambda=2.20$ entspricht die Steigung einem beschränkten Verhalten - für $\Lambda=2.28$ einem diffusiven. Dazwischen lässt sich keine genaue Zuordnung treffen. Dies rührt daher, dass während des "`Schmelzens"' sowohl die feste als auch die flüssige Phase koexistieren. Diese Überlagerung der beiden Zustände führt zu einer undefinierte Diffusionserscheinung.
 
 \section{Paar-Korrelationsfunktion}
 Zur Überprüfung der Ergebnisse aus dem vorherigen Abschnitt wird auch noch die Paarkorrelationsfunktion der verschiedenen Konfigurationen untersucht. Die Paarkorrelationsfunktion in zwei Dimensionen ist wie folgt definiert: \cite{rapaport2004} und \cite{eibl2012}:
@@ -25,9 +25,11 @@ g(r_n) = \frac{h_n L_x L_y}{\pi N^2 r_n \Delta r}
 \end{equation}
 wobei $L_x$ und $L_y$ die Ausdehnung der Simulationsbox, $N$ die Gesamtzahl der Teilchen, $h_n$ die Anzahl der Teilchen im Abstand $r$ mit $(n-1)\Delta r<r<n\Delta r$, $r_n=(n+\frac{1}{2})\Delta r$ und $\Delta r$ die Diskretisierung des Abstands ist.
 
-\begin{figure}[htbp]
+\begin{figure}[!ht]
 	\centering
 		\includegraphics[width=0.70\textwidth]{img/A3_korrelation.png}
-	\caption{Dargestellt ist das Diffusionsverhalten bei verschiedenen Gitterabständen. Bis zum ersten Stoß lässt sich bei allen Dichten eine ballistische Diffusion feststellen. Ein Phasenübergang, das heißt eine Änderung des Diffusionsverhaltens von beschränkt auf diffusiv, lässt sich zwischen $\Lambda=2.2-2.3$ beobachten.}
+	\caption{Es lässt sich beobachten, dass die strenge Ordnung des Kristallgitters für abnehmende Dichte - zunehmendem $\Lambda$} - verloren geht. Dies entspricht einem Phasenübergang von fest nach flüssig.
 	\label{fig:A3_korrelation}
 \end{figure}
+
+Die Ergebnisse der Paarkorrelation in \fref{fig:A3_korrelation} bestätigen die Vermutung, die durch Beobachtung des Diffusionsverhaltens aufgestellt worden ist.

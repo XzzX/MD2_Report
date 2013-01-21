@@ -15,7 +15,7 @@ wobei $R$ der Radius des Teilchens ist. Dies entspricht einem Harte-Kugel-Fluid,
 
 Die erste mögliche Implementation ist nun, alle möglichen Ereignisse zu berechnen, die Simulation auf den Zeitpunkt des frühesten Ereignisses zu setzen und das Ereignis auszuführen. Dafür müssen in jedem Schritt die Kollisionen von allen Teilchen mit allen anderen berechnet werden. Dies führt zu einer quadratischen Laufzeit mit der Teilchenzahl (\fref{fig:A1_runtime}). Für eine ernsthafte Simulation ist diese Variante deswegen unpraktisch.
 
-\begin{figure}[h!]
+\begin{figure}[!ht]
 	\centering
 		\includegraphics[width=0.70\textwidth]{img/A1_runtime.png}
 	\caption{Laufzeit der einfachen Event-Driven Molekulardynamik-Simulation. Die ermittelte Komplexität beträgt $O(N^2.00)$. Dies ist für eine ernsthafte wissenschaftliche Simulation unbrauchbar.}
@@ -24,7 +24,7 @@ Die erste mögliche Implementation ist nun, alle möglichen Ereignisse zu berechne
 
 Um die Komplexität zu verringern werden wie schon bei der Molekulardynamik von weichen Teilchen periodische Randbedingungen und eine Zellunterteilung eingeführt (siehe hierzu \cite{rapaport2004} und \cite{eibl2012}). Weiterhin wird ein sogenannter Event-Kalender verwendet. Dieser speichert alle berechneten Ereignisse und stellt sie im nächsten Zeitschritt wieder zur Verfügung. Somit müssen nicht jedes Mal alle Ereignisse neu berechnet werden, was redundante Rechenarbeit spart. Im Endeffekt müssen nur diejenigen Ereignisse neu berechnet werden, die durch das ausgewertete Ereignis ungültig werden, z.B. zukünftige Teilchekollisionen eines gerade stoßenden Teilchens. Die Struktur des Event-Kalenders muss deswegen leistungsfähig im Bezug auf Löschen und Einfügen neuer Ereignisse sein. In dieser Arbeit wurde die Konstruktion des Event-Kalenders von Rapaport verwendet. \cite{rapaport2004} Die Komplexität des Programms sollte sich damit theoretisch auf $O(N^1)$ reduzieren. Praktisch lies sich dieser Wert durch Ungenauigkeiten bei der Zeitmessung nicht ganz korrekt beobachten (\fref{fig:A2_runtime}). Eine Komplexität von $1.12$ zeigt aber eine deutliche Richtung und ist wesentlich besser als die Komplexität ohne Optimierungen.
 
-\begin{figure}[h!]
+\begin{figure}[!ht]
 	\centering
 		\includegraphics[width=0.70\textwidth]{img/A2_runtime.png}
 	\caption{Laufzeit der verbesserten Event-Driven Molekulardynamik-Simulation mit Zellunterteilung und einem Event-Kalender. Die ermittelte Komplexität beträgt $O(N^{1.12})$. Die Abweichung von der theoretisch Erwarteten Komplexität von $N^1$, lässt sich durch eine schwierige Bestimmung der restlichen Last auf dem Computer erklären.}

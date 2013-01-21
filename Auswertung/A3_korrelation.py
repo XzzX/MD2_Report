@@ -59,4 +59,6 @@ pl.legend()
 
 pl.xlabel("Abstand r")
 
+pl.savefig("A3_korrelation.png", dpi=300)
+
 pl.show()
